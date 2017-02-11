@@ -23,12 +23,14 @@ npm install -g markdown-image-size
    -v --version                get current version
    -h --help                   how to use it
    -s --source <path or url>   base path from relative path
+   -o --overwrite              overwrite files
+   -q --quiet                  Don't print any
    -l --log                    Do print log, Don't print text
    --ignore-relative           ignore relative path, overrides any -s options.
 ```
 
 ```
-mimgs -s "dirPath or baseUrl" file/to/markdown.md > file/to/markdown.md
+mimgs -s "dirPath or baseUrl" file/to/markdown.md -o
 ```
 
 ### Package
