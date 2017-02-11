@@ -51,7 +51,6 @@ options.files.forEach(file => {
     !options.quiet && !options.log && process.stdout.write(str);
 
     if (options.overwrite) {
-        console.log(file);
         require('fs').writeFileSync(file, str);
     }
 })
