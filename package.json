@@ -1,0 +1,33 @@
+{
+  "name": "markdown-image-size",
+  "version": "1.0.0",
+  "description": "get markdown image size",
+  "main": "index.js",
+  "dependencies": {
+    "image-size": "^0.5.1",
+    "minimist": "^1.2.0",
+    "sync-request": "^4.0.1"
+  },
+  "bin": {
+    "mimgs": "cli.js"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "markdown",
+    "image",
+    "size"
+  ],
+  "author": "moyuyc",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moyuyc/node-markdown-image-size.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moyuyc/node-markdown-image-size/issues"
+  },
+  "homepage": "https://github.com/moyuyc/node-markdown-image-size#readme"
+}
