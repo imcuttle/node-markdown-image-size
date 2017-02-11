@@ -1,6 +1,10 @@
 # markdown-image-size
 
+**For Bowser's First Render**
+
 parse markdown text => get image elements => image size (image-size, sync-request) => replace markdown image text to html markup.
+
+**Support HTML & Markdown**
 
 ## Usage
 
