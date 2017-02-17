@@ -123,7 +123,7 @@ const setMarkDownImageSize = (markdown, options) => {
         }
     });
 
-    return markdown.replace(/!\[([\s\S]*?)\]\(([\s\S]*?)\)/g, (m, alt, src) => {
+    return markdown.replace(/!\[([\s\S]*?)\]\(([\s\S]*?[^\\])\)/g, (m, alt, src) => {
         if (src) {
             if (ignoreRelative && !isUrlString(src)) {
                 log && console.log(`[SKIP] ${bsname} (ignore) => ` + m);
