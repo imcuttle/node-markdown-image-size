@@ -1,6 +1,6 @@
 {
   "name": "markdown-image-size",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "get markdown image size",
   "main": "index.js",
   "dependencies": {
