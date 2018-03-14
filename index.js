@@ -121,7 +121,7 @@ const setMarkDownImageSize = function (markdown, options)  {
       if (isUrlString(src)) {
         size = getImageSizeFromUrl_PathSync(src, log);
       } else {
-        src = source + src.replace(/^\/*/, '/');
+        src = path.join(source, src);
         size = getImgSizeFromPathSync(src, log);
       }
       if (!size) {
@@ -150,7 +150,7 @@ const setMarkDownImageSize = function (markdown, options)  {
       if (isUrlString(src)) {
         size = getImageSizeFromUrl_PathSync(src, log);
       } else {
-        src = source + src.replace(/^\/*/, '/');
+        src = path.join(source, src);
         if (ignoreRelative) {
           log && console.log(`[SKIP] ${bsname} (ignore) => ` + m);
           return m;
