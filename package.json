@@ -6,7 +6,8 @@
   "dependencies": {
     "image-size": "^0.5.1",
     "minimist": "^1.2.0",
-    "sync-request": "^4.0.1"
+    "sync-request": "^4.0.1",
+    "url-join": "^4.0.0"
   },
   "bin": {
     "mimgs": "cli.js"

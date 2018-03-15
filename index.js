@@ -99,6 +99,13 @@ const getImgSizeFromPathSync = function (path, log) {
   }, pathCache)
 }
 
+function join(source, path) {
+  if (isUrlString(source)) {
+    return require('url-join')(source, path)
+  }
+  return path.join(source, path)
+}
+
 const setMarkDownImageSize = function (markdown, options)  {
   var file = options.file || '';
   var log = options.log || false;
@@ -121,7 +128,7 @@ const setMarkDownImageSize = function (markdown, options)  {
       if (isUrlString(src)) {
         size = getImageSizeFromUrl_PathSync(src, log);
       } else {
-        src = path.join(source, src);
+        src = join(source, src);
         size = getImgSizeFromPathSync(src, log);
       }
       if (!size) {
@@ -150,7 +157,7 @@ const setMarkDownImageSize = function (markdown, options)  {
       if (isUrlString(src)) {
         size = getImageSizeFromUrl_PathSync(src, log);
       } else {
-        src = path.join(source, src);
+        src = join(source, src);
         if (ignoreRelative) {
           log && console.log(`[SKIP] ${bsname} (ignore) => ` + m);
           return m;
@@ -161,10 +168,9 @@ const setMarkDownImageSize = function (markdown, options)  {
         log && console.error(`[ERROR] ${bsname} => ${m}`)
       }
       return size ? `<img src="${src}" alt="${alt}" width="${size.width}" height="${size.height}" />` : m;
-    } else {
-      log && console.log(`[SKIP] ${bsname} (no src) => ` + m);
-      return m;
     }
+
+    log && console.log(`[SKIP] ${bsname} (no src) => ` + m);
     return m;
   })
 }

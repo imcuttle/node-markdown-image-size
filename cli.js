@@ -10,8 +10,7 @@ var options = {
     quiet: !!argv.q || !!argv.quiet,
     log: !!argv.l || !!argv.log,
     ignoreRelative: !!argv['ignore-relative'],
-    overwrite: !!argv['o'] || !!argv['overwrite'],
-    quiet: !!argv['q'] || !!argv['quiet']
+    overwrite: !!argv['o'] || !!argv['overwrite']
 }
 
 if (options.help) {
