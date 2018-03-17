@@ -99,11 +99,11 @@ const getImgSizeFromPathSync = function (path, log) {
   }, pathCache)
 }
 
-function join(source, path) {
+function join(source, src) {
   if (isUrlString(source)) {
-    return require('url-join')(source, path)
+    return require('url-join')(source, src)
   }
-  return path.join(source, path)
+  return path.join(source, src)
 }
 
 const setMarkDownImageSize = function (markdown, options)  {
