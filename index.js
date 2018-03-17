@@ -128,8 +128,7 @@ const setMarkDownImageSize = function (markdown, options)  {
       if (isUrlString(src)) {
         size = getImageSizeFromUrl_PathSync(src, log);
       } else {
-        src = join(source, src);
-        size = getImgSizeFromPathSync(src, log);
+        size = getImgSizeFromPathSync(join(source, src), log);
       }
       if (!size) {
         log && console.error(`[ERROR] ${bsname} => ${m}`);
@@ -157,12 +156,11 @@ const setMarkDownImageSize = function (markdown, options)  {
       if (isUrlString(src)) {
         size = getImageSizeFromUrl_PathSync(src, log);
       } else {
-        src = join(source, src);
         if (ignoreRelative) {
           log && console.log(`[SKIP] ${bsname} (ignore) => ` + m);
           return m;
         }
-        size = getImgSizeFromPathSync(src, log);
+        size = getImgSizeFromPathSync(join(source, src), log);
       }
       if (!size) {
         log && console.error(`[ERROR] ${bsname} => ${m}`)
