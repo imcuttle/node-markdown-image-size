@@ -8,8 +8,8 @@ const isUrlString = function (str) {
   return !!url.parse(str).slashes || str.startsWith('//')
 }
 
-const getImageSizeFromUrl_Path = function (src) {
-  return isUrlString(src) ? getImgSizeFromURL(src) : getImgSizeFromPath(src)
+const getImageSizeFromUrl_Path = function (src, log) {
+  return isUrlString(src) ? getImgSizeFromURL(src, log) : getImgSizeFromPath(src, log)
 }
 
 const getImageSizeFromUrl_PathSync = function (src, log) {
@@ -17,7 +17,7 @@ const getImageSizeFromUrl_PathSync = function (src, log) {
   return ops.slashes ? getImgSizeFromURLSync(src, log) : getImgSizeFromPathSync(src, log);
 }
 
-const getImgSizeFromURL = function (url) {
+const getImgSizeFromURL = function (url, log) {
   const ops = url.parse(imgUrl);
   const protocol = ops.protocol.replace(/:$/, '');
   let protocolPackage;
@@ -31,7 +31,7 @@ const getImgSizeFromURL = function (url) {
     protocolPackage.get(url, function (res) {
       let statusCode = res.statusCode;
       if (statusCode === 302 || statusCode === 301) {
-        console.log(url, statusCode, "=>", res.headers['location']);
+        log && console.log(url, statusCode, "=>", res.headers['location']);
         return getImgSizeFromURL(res.headers['location'])
       }
       const chunks = []
@@ -40,7 +40,7 @@ const getImgSizeFromURL = function (url) {
       }).on('end', function () {
         const buffer = Buffer.concat(chunks);
         const size = sizeOf(buffer);
-        console.log(url, "<=>", size);
+        log && console.log(url, "<=>", size);
         resolve(size);
       })
     }).on('error', reject)
@@ -61,12 +61,12 @@ const getImgSizeFromURLSync = function (url, log) {
   }, urlCache)
 }
 
-const getImgSizeFromPath = function (path) {
+const getImgSizeFromPath = function (path, log) {
   return new Promise(function (resolve, reject) {
     sizeOf(path, function (err, size) {
       if (err) reject(err.message);
       else {
-        console.log(path, "<=>", reject)
+        log && console.log(path, "<=>", reject)
         resolve(size);
       }
     })
